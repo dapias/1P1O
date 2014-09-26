@@ -723,17 +723,19 @@ def plot_distribucion(sim):
     num = [i for i in xrange(num_eventos)]
     
     for i in xrange(num_eventos):
-        vx[0].append(abs(sim.registro_velocidades2["Particula1"][i]))
+        vx[0].append(sim.registro_velocidades2["Particula1"][i])
 #        vx[0].append(sim.registro_velocidades2["Particula1"][i])
-    plt.figure() 
+    #plt.figure() 
     #Lo impoortante de la distribuición de Maxwell es la magnitud de la velocidad, no el signo,
     # con esto en mente voy a tomar el valor absoluto
-    plt.plot(num,vx[0], marker = 'o')
-    plt.xlabel('#decolision')
-    plt.ylabel('velocidad')
+   # plt.plot(num,vx[0], marker = 'o')
+   # plt.xlabel('#decolision')
+   # plt.ylabel('velocidad')
     
     plt.figure()
-    plt.hist(vx[0],50)
+    plt.hist(vx[0],50, normed = True)
+    plt.xlabel('velocidad')
+    plt.ylabel('probabilidad')
     plt.show()
     
     
@@ -766,7 +768,7 @@ if __name__ == '__main__':
 #    np.random.seed(211)
     frecuencia = 2.0
     num_total = 2
-    num_puntos = 1000
+    num_puntos = 500000
     reservorio = Reservorio()
     caja = Caja(np.float(num_total - 1.)/2. + 1.)
     lista = crear_particulas_aleatorias(caja.tamano,num_total,frecuencia,reservorio)
